@@ -60,7 +60,7 @@ module.exports = (client) => {
           const hasRole = eventFunction.roles
             ? eventFunction.roles.some((r) => message.member.roles.cache.has(r))
             : false;
-          const isAuthor = message.author.id === "584506941754310669";
+          const isAuthor = message.author.id === client.config.devs[0];
           if (!hasRole && !isAuthor) continue;
 
           message.content = message.content.replace(/\s+/g, " ").trim();

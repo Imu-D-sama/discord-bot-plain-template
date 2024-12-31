@@ -7,10 +7,11 @@ const {
 module.exports = {
   name: "ping",
   description: "pong!!",
-  //devOnly: true,
-  //MainOnly: true,
+  // devOnly: true,
+  // MainOnly: true,
   // options: Object[],
   // Roles: Object[],
+  // global: false
   deleted: false,
   permissionsRequired: [PermissionFlagsBits.UseApplicationCommands],
   botPermissions: [PermissionFlagsBits.UseApplicationCommands],

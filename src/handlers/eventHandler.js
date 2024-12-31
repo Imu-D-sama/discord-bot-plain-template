@@ -57,12 +57,15 @@ module.exports = (client) => {
             await eventFunction.bypass(client, message);
           }
           if (message.author.bot) continue;
-          const hasRole = eventFunction.roles
-            ? eventFunction.roles.some((r) => message.member.roles.cache.has(r))
-            : false;
-          const isAuthor = message.author.id === client.config.devs[0];
-          if (!hasRole && !isAuthor) continue;
-
+          if (!eventFunction.open) {
+            const hasRole = eventFunction.roles
+              ? eventFunction.roles.some((r) =>
+                  message.member.roles.cache.has(r)
+                )
+              : false;
+            const isAuthor = message.author.id === client.config.devs[0];
+            if (!hasRole && !isAuthor) continue;
+          }
           message.content = message.content.replace(/\s+/g, " ").trim();
           await eventFunction.callback(client, message);
         } catch (error) {

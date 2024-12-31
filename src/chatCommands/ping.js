@@ -2,7 +2,8 @@ const { Client, Message } = require("discord.js");
 
 module.exports = {
   name: "ping",
-  //roles: [],
+  // roles: [],
+  // open: false,
   /**
    *
    * @param {Client} client

@@ -1,6 +1,5 @@
 const { Client, CommandInteraction } = require("discord.js");
 const { devs, MainServer } = require("../../../config.json");
-const { HighStaff } = require("../../../config.json");
 const getLocalCommands = require("../../utils/getLocalCommands");
 
 /**
@@ -50,8 +49,7 @@ module.exports = async (client, interaction) => {
       for (const permission of commandObject.permissionsRequired) {
         if (
           !interaction.member.permissions.has(permission) &&
-          interaction.member.id !== OWNERID &&
-          !interaction.member.roles.cache.has(HighStaff)
+          interaction.member.id !== OWNERID
         ) {
           interaction.reply({
             content: "Not enough permissions.",
@@ -67,9 +65,8 @@ module.exports = async (client, interaction) => {
       );
 
       const isOwner = interaction.member.id === OWNERID;
-      const isHighStaff = interaction.member.roles.cache.has(HighStaff);
 
-      if (!hasRequiredRole && !isOwner && !isHighStaff) {
+      if (!hasRequiredRole && !isOwner) {
         interaction.reply({
           content: "Not enough permissions.",
           ephemeral: true,
